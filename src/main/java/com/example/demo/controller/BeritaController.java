@@ -37,7 +37,8 @@ public class BeritaController {
         public ResponseEntity <Berita> createBerita(@RequestParam("jenisKegiatan") String jenisKegiatan,
                                             @RequestParam("penulis") String penulis,
                                             @RequestParam("gambar") MultipartFile gambar,
-                                            @RequestParam("teks") String teks) {
+                                            @RequestParam("teks") String teks,
+                                            @RequestParam("detail_berita") String detail_berita) {
             try {
                 byte[] gambarData = gambar.getBytes();
                 Berita berita = new Berita(jenisKegiatan, penulis, gambarData, teks);
@@ -103,7 +104,8 @@ public class BeritaController {
                                                @RequestParam("jenis_kegiatan") String jenisKegiatan,
                                                @RequestParam("penulis") String penulis,
                                                @RequestParam(value = "gambar", required = false) MultipartFile gambar,
-                                               @RequestParam("teks") String teks) {
+                                               @RequestParam("teks") String teks,
+                                               @RequestParam("detail_berita") String detail_berita) {
         Berita existingBerita = beritaService.getBeritaById((long) id);
         if (existingBerita == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
