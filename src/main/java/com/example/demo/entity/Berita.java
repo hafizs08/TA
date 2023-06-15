@@ -29,14 +29,18 @@ public class Berita {
     @Column(name = "teks", columnDefinition = "TEXT")
     private String teks;
 
+    @Column(name = "detial_berita")
+    private String detialBerita;
+
     // Constructors
 
     
 
-    public Berita(String jenisKegiatan, String penulis, byte[] gambar, String teks) {
+    public Berita(String jenisKegiatan, String penulis, byte[] gambar, String teks , String detialBerita) {
         this.jenisKegiatan = jenisKegiatan;
         this.penulis = penulis;
         this.gambar = gambar;
         this.teks = teks;
+        this.detialBerita = detialBerita;
     }
 }

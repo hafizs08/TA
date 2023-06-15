@@ -39,6 +39,7 @@ public class BeritaService {
             berita.setJenisKegiatan(updatedBerita.getJenisKegiatan());
             berita.setPenulis(updatedBerita.getPenulis());
             berita.setGambar(updatedBerita.getGambar());
+            berita.setDetialBerita(updatedBerita.getDetialBerita());
             return beritaRepository.save(berita);
         } else {
             throw new NoSuchElementException("Berita not found with id: " + id);

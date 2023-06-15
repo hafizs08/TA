@@ -37,10 +37,11 @@ public class BeritaController {
         public ResponseEntity <Berita> createBerita(@RequestParam("jenisKegiatan") String jenisKegiatan,
                                             @RequestParam("penulis") String penulis,
                                             @RequestParam("gambar") MultipartFile gambar,
-                                            @RequestParam("teks") String teks) {
+                                            @RequestParam("teks") String teks,
+                                            @RequestParam("detialBerita") String detialBerita) {
             try {
                 byte[] gambarData = gambar.getBytes();
-                Berita berita = new Berita(jenisKegiatan, penulis, gambarData, teks);
+                Berita berita = new Berita(jenisKegiatan, penulis, gambarData, teks, detialBerita);
                 Berita savedBerita = beritaService.saveBerita(berita);
                 return ResponseEntity.ok(savedBerita);
             } catch (IOException e) {
@@ -100,10 +101,11 @@ public class BeritaController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Berita> updateBerita(@PathVariable("id") int id,
-                                               @RequestParam("jenis_kegiatan") String jenisKegiatan,
+                                               @RequestParam("jenisKegiatan") String jenisKegiatan,
                                                @RequestParam("penulis") String penulis,
                                                @RequestParam(value = "gambar", required = false) MultipartFile gambar,
-                                               @RequestParam("teks") String teks) {
+                                               @RequestParam("teks") String teks,
+                                               @RequestParam("detialBerita") String detialBerita) {
         Berita existingBerita = beritaService.getBeritaById((long) id);
         if (existingBerita == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
